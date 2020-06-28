@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title>Closures</title>
+</head>
+
+<body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+        // Closures
+        // printColor
+
+        // IIFE | Expresión de función ejecutada inmediatamente (son funciones que se ejecutan tan pronto como se definen.)
+        // (function () {
+        //     let color = 'green';
+
+        //     function printColor() {
+        //         console.log(color);
+        //     }
+
+        //     printColor();
+        // })();
+
+        // Funciones que regresan funciones
+        // function makeColorPrinter(color) {
+        //     let colorMessage = `the color is ${color}`
+        //     return function () {
+        //         console.log(colorMessage)
+        //     }
+        // }
+
+        // let greenColorPrinter = makeColorPrinter("green")
+        // console.log(greenColorPrinter())
+
+        //   variables "privados"
+        // let counter = {
+        //     count: 3
+        // }
+        // console.log(counter.count) //podemos acceder al counter
+        // counter.count = 99
+        // console.log(counter.count) //sobreescribe
+
+
+        function makeCounter(n) {
+            let count = n
+
+            // funcion makeCounter que retorna un objeto con atributos que retornan funciones
+            return {
+                increase: function name(params) {
+                    count = count + 1
+                },
+                decrease: function name(params) {
+                    count = count - 1
+                },
+                getCount: function name(params) {
+                    return count
+                }
+            }
+        }
+
+        let counter = makeCounter(7)
+        console.log("the count is: " + counter.getCount())
+        counter.increase()
+        console.log("the count is: " + counter.getCount())
+        counter.decrease()
+        counter.decrease()
+        counter.decrease()
+        counter.decrease()
+        console.log("the count is: " + counter.getCount())
+
+        counter.count = 0 // variable no expuesta, por eso no cambia el valor o leer directamento porque es privada
+
+
+        //         Son funciones que regresan una función o un objeto con funciones que mantienen las variables que fueron declaradas fuera de su scope.
+
+        // Los closures nos sirven para tener algo parecido a variables privadas, característica que no tiene JavaScript por default. Es decir encapsulan variables que no pueden ser modificadas directamente por otros objetos, sólo por funciones pertenecientes al mismo.
+    </script>
+</body>
+
+</html>
