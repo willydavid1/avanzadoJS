@@ -23,7 +23,8 @@
       <!-- <button id="muteButton">Mute/Unmute</button> -->
     </main>
 
-    <script src="./assets/index.js"></script>
+    <!-- declara que este archivo es un modulo con type limita el alcance de las declaraciones a ese archivo | es decir no podemos acceder desde la consola al MediaPlayer :( -->
+    <script type="module" src="./assets/index.js"></script> 
 
     <!-- async. Con async podemos hacer la petición de forma asíncrona y no vamos a detener la carga del DOM hasta que se haga la ejecución del código. -->
     <!-- defer. La petición es igual asíncrona como en el async pero va a deferir la ejecución del Javascript hasta el final de que se cargue todo el documento. -->
