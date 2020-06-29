@@ -6,8 +6,22 @@ function MediaPlayer(config) {
 }
 
 MediaPlayer.prototype._initPlugins = function () {
+    // getters = se usan para acceder a las propiedades de un objeto
+    // settters = se usan para cambiar esas propiedades
+    const player = {
+        play: () => this.play(),
+        pause: () => this.pause(),
+        media: this.media,
+        get muted() { //getter
+            return this.media.muted
+        },
+        set muted(value) { // setter
+            this.media.muted = value
+        }
+    }
+
     this.plugins.forEach(plugin => {
-        plugin.run(this) //le pasamos la instancia del MediaPlayer
+        plugin.run(player) //le pasamos el objeto
     });
 }
 
