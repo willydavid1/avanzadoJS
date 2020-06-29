@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <title>
+    Function.prototype.call, Function.prototype.apply, Function.prototype.bind
+  </title>
+</head>
+
+<body>
+  <a href="/ejercicios/">Go back</a>
+  <p><em>Abre la consola</em></p>
+
+  <ul>
+    <li><button class="call-to-action">Aprender</button></li>
+    <li><button class="call-to-action">Aprender Más</button></li>
+    <li><button class="call-to-action">¡Nunca parar de Aprender!</button></li>
+  </ul>
+
+  <script>
+
+    // Establece `this` usando `call`
+    function saludar() {
+      //esta funcion por default no esta en el contexto de ningun obj ni clase
+      console.log(`Hola. Soy ${this.name} ${this.apellido}`)
+    }
+    const willy = {
+      name: "Willy",
+      apellido: "David"
+    }
+    saludar.call(willy) //llama a la funcion pero como contexto de this le pasamos el obj
+
+
+    // Establece `this` usando `call` y pasar argumentos a la función
+    function caminar(metros, direccion) {
+      console.log(`${this.name} camina ${metros} metros hacia ${direccion}`)
+    }
+
+    caminar.call(willy, 400, "norte")
+
+
+    // Establece `this` usando `apply` y pasar argumentos a la función solo que como arreglo
+    caminar.apply(willy, [800, "noreste"]) 
+
+    /*
+      Call - comma (parametros separados por coma)
+      Apply - arreglo (se le pasan los argumentos como un arreglo)
+    */
+    // Establecer `this` en una nueva función usando `bind` | Recibe como primer y único argumento el this. No ejecuta la función, sólo regresa otra función con el nuevo this integrado.
+    const daniel = {
+      name: "Daniel",
+      apellido: "Sanchez"
+    }
+    const danielSaluda = saludar.bind(daniel) //bindea this y me retorna la funcion pero con elthis integrado
+    danielSaluda()
+
+
+    // Para los parametros se pueden pasar en el bind y en la llamada xD | podemos hacer Currying
+    const danielCamina = caminar.bind(daniel, 1000)
+    danielCamina("este")
+
+
+    // Cuándo es útil usar uno de estos métodos
+    const buttons = document.getElementsByClassName('call-to-action');
+    // buttons.forEach(button => {
+    //   button.onclick = () => alert("Nunca pares de aprender")
+    // });
+
+    //buttons es un nodeList asi que llamamos al forEach pero como contexto le pasamos los botones
+    Array.prototype.forEach.call(buttons, button => {
+      button.onclick = () => alert("Nunca pares de aprender")
+    })
+
+
+
+    // Las funciones call, apply y bind son parte del prototipo Function. Toda función usa este prototipo y por lo tanto tiene estas tres funciones.
+
+    // functionName.call(). Ejecuta la función recibiendo como primer argumento el this y los siguientes son los argumentos que recibe la función que llamó a call.
+    // functionName.apply(). Ejecuta la función recibiendo como primer argumento el this y como segundo un arreglo con los argumentos que recibe la función que llamó a apply.
+    // functionName.bind(). Recibe como primer y único argumento el this. No ejecuta la función, sólo regresa otra función con el nuevo this integrado.
+  </script>
+</body>
+
+</html>
