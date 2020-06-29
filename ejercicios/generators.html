@@ -1,0 +1,98 @@
+<html>
+
+<head>
+  <title>Generators</title>
+</head>
+
+<body>
+  <a href="/ejercicios/">Go back</a>
+  <p><em>Abre la consola</em></p>
+
+  <script>
+    // Los generadores son funciones de las que se puede salir y volver a entrar y se declaran con function*
+    // Su contexto (asociación de variables) será conservado entre las reentradas.
+    // Cada vez que llamamos next, la ejecución del generador va a continuar hasta el proximo yield
+    // Es decir un generador empieza suspendido y nos retorna un value y un boolean done (cada vez de llamamos al generador mediante gen.next() ) que define cada yield (value) y si ya termino el flujo del generador (value)
+
+    function* simpleGenerator() {
+      console.log("GENERATOR START")
+      yield 1
+      yield 2
+      yield 3
+      console.log("GENERATOR END")
+    }
+    // const gen = simpleGenerator()
+    // console.log(gen.next()) //GENERATOR START yield 1
+    // console.log(gen.next()) //yield 2
+    // console.log(gen.next()) //yield 3
+    // console.log(gen.next()) //GENERATOR END {value: undefined, done: true} //termina el generador done: TRUE :)
+
+
+
+    // Podemos hacer generadores infinitos.
+    // function* idMaker() {
+    //   let id = 1
+    //   while (true) {
+    //     yield id //cuando el generador llegue al yield el while se detiene y nos regresa el valor que esta alli
+    //     id = id + 1
+    //   }
+    // }
+    // const gen = idMaker()
+    // gen.next() // value 1 done false
+    // gen.next() // value 2 done false
+    // gen.next() // value 3 done false
+    // gen.next() // value 4 done false
+
+
+    // Cuando llamamos next también podemos pasar valores que la función recibe.
+    function* idMakerWithReset() {
+      let id = 1
+      let reset
+      while (true) {
+        reset = yield id //si pasamos un true en algun next le asignamos ese valor a reset y si existe un reset pues resetea el id
+        if (reset) {
+          id = 1
+        } else {
+          id = id + 1
+        }
+      }
+    }
+      // const gen = idMakerWithReset()
+      // gen.next() // 1
+      // gen.next() // 2
+      // gen.next() // 3
+      // gen.next(true) // 1
+      // gen.next() // 2
+
+
+
+      // Ahora hagamos un ejemplo un poco más complejo: la secuencia fibonacci
+      function* fibonnacci() {
+        let a = 1
+        let b = 2
+        while (true) {
+          const nextNumber = a + b
+          a = b
+          b = nextNumber
+          yield nextNumber
+        }
+      }
+      // const gen = fibonnacci()
+      
+
+
+
+
+      // Los generadores son funciones especiales, pueden pausar su ejecución y luego volver al punto donde se quedaron recordando su scope.
+
+      // Algunas de sus características:
+
+      // Los generadores regresan una función.
+      // Empiezan suspendidos y se tiene que llamar next para que ejecuten.
+      // Regresan un value y un boolean done que define si ya terminaron.
+      // yield es la instrucción que regresa un valor cada vez que llamamos a next y detiene la ejecución del generador.
+
+  </script>
+</body>
+
+</html>
