@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <title>Herencia Prototipal</title>
+</head>
+
+<body>
+  <a href="/ejercicios/">Go back</a>
+  <p><em>Abre la consola</em></p>
+
+  <h1>
+    <code>SomeObject.prototype</code> es un objeto donde definimos el
+    prototipo de las instancias de <code>SomeObject</code>. Es decir, las
+    instancias de <code>SomeObject</code> van a "heredar" de
+    <code>SomeObject.prototype</code>.
+    <br />
+    <br />
+    <code>SomeObject.[[Prototype]]</code> es el prototipo de
+    <code>SomeObject</code>. Es decir, <code>SomeObject</code> "hereda" de
+    <code>SomeObject.prototype</code>.
+  </h1>
+
+  <script>
+    function Hero(name) {
+      this.name = name;
+    }
+
+    Hero.prototype.saludar = function () {
+      console.log(`Hola, soy ${this.name}.`);
+    };
+
+    const zelda = new Hero('Zelda');
+
+    // propiedades de la instancia
+    console.log('Name:', zelda.name);
+    // propiedades de la "clase"
+    console.log('Saludar:', zelda.saludar);
+
+    // propiedades heredadas ej: toString
+    console.log('toString:', zelda.toString);
+
+    // hasOwnProperty (de dónde sale toString o esto?) | sirve para inspeccionar si algo le pertenece a ese objeto o si viene atravez de herencia desde su prototype chain.
+    console.log(
+      'zelda.hasOwnProperty("saludar"):',
+      zelda.hasOwnProperty('saludar')
+    );
+
+      // inspeccionemos el prototipo del zelda | viene de Hero y __proto__ es el objeto donde caen las propiedades de Hero.prototype
+      // inspeccionemos el prototipo del Hero
+      // inspeccionemos el prototipo del Object
+
+      //  SomeObject.prototype  es un objeto donde definimos el prototipo de las instancias de SomeObject . Es decir, las instancias de SomeObject  van a "heredar" de SomeObject.prototype. | simpre busca en el prototype y si nos estan en el prototype busca en el prototype de ese prototype
+  </script>
+</body>
+
+</html>
