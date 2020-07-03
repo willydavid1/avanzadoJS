@@ -11,7 +11,7 @@ Abstract Factory
 Builder (es usado para permitir la creación de una variedad de objetos complejos desde un objeto fuente, ejemplo jquery)
 Factory Method
 Prototype
-Singleton
+Singleton (Es un patrón que te asegura que una clase solo tiene una instancia. Esta única instancia puede ser consumida por cualquier otro objeto.)
 
 ----Estructurales
 Describen formas de componer objetos para formar nuevas estructuras flexibles y eficientes.
