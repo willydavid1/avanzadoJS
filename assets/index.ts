@@ -1,10 +1,10 @@
-import MediaPlayer from "./MediaPlayer.js" // importamos un modulo
-import AutoPlay from "./plugins/AutoPlay.js"
-import AutoPause from "./plugins/AutoPause.ts"
+import MediaPlayer from "./MediaPlayer" // importamos un modulo
+import AutoPlay from "./plugins/AutoPlay"
+import AutoPause from "./plugins/AutoPause"
 
 const video = document.querySelector("video")
-const button = document.querySelector("#playButton")
-const buttonMute = document.querySelector("#muteButton")
+const button: HTMLElement = document.querySelector("#playButton")
+const buttonMute: HTMLElement = document.querySelector("#muteButton")
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(err => {

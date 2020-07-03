@@ -1,27 +1,32 @@
 class MediaPlayer {
+    media: HTMLMediaElement //media va ser de tipo HTMLMediaElement
+    plugins: Array<any>
+
+
     constructor(config) {
         this.media = config.el
         this.plugins = config.plugins || []
 
-        this._initPlugins()
+        this.initPlugins()
     }
-    _initPlugins() {
+    
+    private initPlugins() {
         // getters = se usan para acceder a las propiedades de un objeto
         // settters = se usan para cambiar esas propiedades
-        const player = {
-            play: () => this.play(),
-            pause: () => this.pause(),
-            media: this.media,
-            get muted() {
-                return this.media.muted
-            },
-            set muted(value) {
-                this.media.muted = value
-            }
-        }
+        // const player = {
+        //     play: () => this.play(),
+        //     pause: () => this.pause(),
+        //     media: this.media,
+        //     get muted() {
+        //         return this.media.muted
+        //     },
+        //     set muted(value) {
+        //         this.media.muted = value
+        //     }
+        // }
 
         this.plugins.forEach(plugin => {
-            plugin.run(player) //le pasamos el objeto
+            plugin.run(this) //contexto de MediaPlayer
         })
     }
     play() {
