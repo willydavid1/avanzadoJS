@@ -1,3 +1,38 @@
 Son soluciones generales ya probadas dentro de un contexto que las limita a problemas frecuentes que nos encontramos en el desarrollo de software.
 Resulta ser una solución a un problema de diseño. Para que una solución sea considerada un patrón debe poseer ciertas características. Una de ellas es que debe haber comprobado su efectividad resolviendo problemas similares en ocasiones anteriores. Otra es que debe ser reutilizable, lo que significa que es aplicable a diferentes problemas de diseño en distintas circunstancias.
 No es obligatorio utilizar los patrones, solo es aconsejable en el caso de tener el mismo problema o similar que soluciona el patrón, siempre teniendo en cuenta que en un caso particular puede no ser aplicable. “Abusar o forzar el uso de los patrones puede ser un error”.
+
+Categorías de patrones de diseño
+
+----Creacionales
+Proveen diferentes mecanismos para crear objetos.
+
+Abstract Factory
+Builder (es usado para permitir la creación de una variedad de objetos complejos desde un objeto fuente, ejemplo jquery)
+Factory Method
+Prototype
+Singleton
+
+----Estructurales
+Describen formas de componer objetos para formar nuevas estructuras flexibles y eficientes.
+Adapter
+Bridge
+Composite
+Decorator
+Facade
+Flyweight
+Proxy (el proxy de js recibe llamadas que iban dirigidas a un objeto pero las intercepta y tenemos la oportunidad de hacer algo con ellas, finalmente le pasa la llamada al objeto pero usa composición para poder interceptar esas llamadas)
+
+----Comportamiento
+Gestionan algoritmos y responsabilidades entre objetos.
+Chain of Responsibility
+Command
+Interpreter
+Iterator
+Mediator
+Memento
+Observer
+State
+Strategy
+Template Method
+Visitor
