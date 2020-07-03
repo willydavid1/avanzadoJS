@@ -1,57 +1,60 @@
-function MediaPlayer(config) {
-    this.media = config.el
-    this.plugins = config.plugins || []
+class MediaPlayer {
+    constructor(config) {
+        this.media = config.el
+        this.plugins = config.plugins || []
 
-    this._initPlugins()
-}
+        this._initPlugins()
+    }
+    _initPlugins() {
+        // getters = se usan para acceder a las propiedades de un objeto
+        // settters = se usan para cambiar esas propiedades
+        const player = {
+            play: () => this.play(),
+            pause: () => this.pause(),
+            media: this.media,
+            get muted() {
+                return this.media.muted
+            },
+            set muted(value) {
+                this.media.muted = value
+            }
+        }
 
-MediaPlayer.prototype._initPlugins = function () {
-    // getters = se usan para acceder a las propiedades de un objeto
-    // settters = se usan para cambiar esas propiedades
-    const player = {
-        play: () => this.play(),
-        pause: () => this.pause(),
-        media: this.media,
-        get muted() { //getter
-            return this.media.muted
-        },
-        set muted(value) { // setter
-            this.media.muted = value
+        this.plugins.forEach(plugin => {
+            plugin.run(player) //le pasamos el objeto
+        })
+    }
+    play() {
+        this.media.play()
+    }
+    pause() {
+        this.media.pause()
+    }
+    mute() {
+        this.media.muted = true
+    }
+    unmute() {
+        this.media.muted = false
+    }
+    togglePlay() {
+        if (this.media.paused) {
+            this.play()
+        }
+        else {
+            this.pause()
         }
     }
-
-    this.plugins.forEach(plugin => {
-        plugin.run(player) //le pasamos el objeto
-    });
-}
-
-MediaPlayer.prototype.play = function() {
-    this.media.play()
-}
-
-MediaPlayer.prototype.pause = function() {
-    this.media.pause()
-}
-
-MediaPlayer.prototype.mute = function() {
-    this.media.muted = true
-}
-
-MediaPlayer.prototype.unmute = function() {
-    this.media.muted = false
-}
-
-MediaPlayer.prototype.togglePlay = function () {
-    if (this.media.paused) {
-        this.play()
-    } else {
-        this.pause()
+    toggleMuted() {
+        this.media.muted ? this.unmute() : this.mute()
     }
 }
 
-MediaPlayer.prototype.toggleMuted = function () {
-    this.media.muted ? this.unmute() : this.mute()
-}
+
+
+
+
+
+
 
 // // metodo del objeto MediaPlayer
 // MediaPlayer.prototype.handlePlayOrPause = function () {

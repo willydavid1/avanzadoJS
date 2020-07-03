@@ -1,6 +1,6 @@
 import MediaPlayer from "./MediaPlayer.js" // importamos un modulo
 import AutoPlay from "./plugins/AutoPlay.js"
-import AutoPause from "./plugins/AutoPause.js"
+import AutoPause from "./plugins/AutoPause.ts"
 
 const video = document.querySelector("video")
 const button = document.querySelector("#playButton")

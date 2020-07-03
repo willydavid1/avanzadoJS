@@ -1,4 +1,9 @@
+import MediaPlayer from "../MediaPlayer" // MediaPlayer ts lo entiende como tipo por el keyword class
+
 class AutoPause {
+    private threshold: number
+    player: MediaPlayer
+
     constructor() {
         this.threshold = 0.25
         this.handlerIntersection = this.handlerIntersection.bind(this)
@@ -16,7 +21,7 @@ class AutoPause {
     }
 
     //recibimos todos los objetos que estamos observando
-    handlerIntersection(entries) {
+    private handlerIntersection(entries: IntersectionObserverEntry[]) {
         const entry = entries[0]
 
         const isVisible = entry.intersectionRatio >= this.threshold
@@ -27,7 +32,7 @@ class AutoPause {
         }
     }
 
-    handlerVisibilityChange() {
+    private handlerVisibilityChange() {
         const isVisible = document.visibilityState === "visible"
         if (isVisible) {
             this.player.play()
