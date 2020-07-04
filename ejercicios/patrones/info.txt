@@ -49,3 +49,7 @@ Es uno de los patrones más utilizados, algunos ejemplos típicos son:
 Newsletter
 Sockets
 Listeners en páginas web
+
+----
+Casos de Uso del patrón Observer: Redux
+Redux usa el patrón Observer, si vemos el codigo fuente del store vemos que ofrece mecanismos de suscripción y desuscripción a múltiples observadores que quieren ser notificados de los cambios en dicho sujeto. recordar que Cada observador expone un método de update que es usado por el sujeto para notificar cualquier cambio en el caso de redux le notifica a los componentes que el estado cambio.
