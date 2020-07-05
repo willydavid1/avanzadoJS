@@ -15,5 +15,8 @@
   },
   "browserslist": [
     "last 1 Chrome version"
-  ]
+  ],
+  "dependencies": {
+    "@willydavid1/platzimediaplayer": "^1.0.0"
+  }
 }

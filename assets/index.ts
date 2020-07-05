@@ -1,7 +1,7 @@
-import MediaPlayer from "./MediaPlayer" // importamos un modulo
-import AutoPlay from "./plugins/AutoPlay"
-import AutoPause from "./plugins/AutoPause"
-import Ads from "./plugins/Ads"
+import MediaPlayer from "@willydavid1/platzimediaplayer" // importamos un modulo
+import AutoPlay from "@willydavid1/platzimediaplayer/lib/plugins/AutoPlay"
+import AutoPause from "@willydavid1/platzimediaplayer/lib/plugins/AutoPause"
+import Ads from "@willydavid1/platzimediaplayer/lib/plugins/Ads"
 
 
 const video = document.querySelector("video")
